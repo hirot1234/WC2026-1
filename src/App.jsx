@@ -1,6 +1,6 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Search, CalendarDays, Trophy, Tv, Star } from 'lucide-react';
+import { Search, CalendarDays, Trophy, Tv, Star, RefreshCw } from 'lucide-react';
 import './style.css';
 
 const matches = [
@@ -110,6 +110,21 @@ const matches = [
   ['2026-07-20T04:00:00+09:00','Final','Winner SF-1','Winner SF-2','DAZN / NHK']
 ].map((m, i) => ({ id: i + 1, datetime: m[0], round: m[1], home: m[2], away: m[3], broadcast: m[4] }));
 
+function normalizeName(name) {
+  return String(name || '')
+    .toLowerCase()
+    .replace(/&/g, 'and')
+    .replace(/[^a-z0-9]+/g, '')
+    .replace('usa', 'unitedstates')
+    .replace('ivorycoast', 'cotedivoire')
+    .replace('drc', 'drcongo');
+}
+
+function matchKey(m) {
+  return `${m.datetime.slice(0, 10)}-${normalizeName(m.home)}-${normalizeName(m.away)}`;
+}
+
+
 const rounds = ['すべて', ...Array.from(new Set(matches.map(m => m.round)))];
 
 function fmtDate(iso) {
@@ -123,13 +138,46 @@ export default function App() {
   const [q, setQ] = useState('');
   const [round, setRound] = useState('すべて');
   const [onlyJapan, setOnlyJapan] = useState(false);
+  const [liveResults, setLiveResults] = useState({});
+  const [loadingResults, setLoadingResults] = useState(false);
+  const [lastUpdated, setLastUpdated] = useState(null);
+  const [resultError, setResultError] = useState('');
 
-  const filtered = useMemo(() => matches.filter(m => {
+  async function refreshResults() {
+    setLoadingResults(true);
+    setResultError('');
+    try {
+      const res = await fetch('/api/results', { cache: 'no-store' });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+      const byKey = {};
+      for (const r of data.matches || []) byKey[r.key] = r;
+      setLiveResults(byKey);
+      setLastUpdated(new Date());
+    } catch (err) {
+      setResultError('結果の自動取得に失敗しました。静的スケジュールを表示しています。');
+    } finally {
+      setLoadingResults(false);
+    }
+  }
+
+  useEffect(() => {
+    refreshResults();
+    const timer = window.setInterval(refreshResults, 60 * 1000);
+    return () => window.clearInterval(timer);
+  }, []);
+
+  const enrichedMatches = useMemo(() => matches.map(m => ({
+    ...m,
+    live: liveResults[matchKey(m)] || null,
+  })), [liveResults]);
+
+  const filtered = useMemo(() => enrichedMatches.filter(m => {
     const text = `${m.round} ${m.home} ${m.away} ${m.broadcast}`.toLowerCase();
     return (round === 'すべて' || m.round === round)
       && (!onlyJapan || [m.home, m.away].includes('Japan'))
       && text.includes(q.toLowerCase());
-  }), [q, round, onlyJapan]);
+  }), [q, round, onlyJapan, enrichedMatches]);
 
   const grouped = useMemo(() => filtered.reduce((acc, m) => {
     const key = fmtDate(m.datetime);
@@ -143,7 +191,7 @@ export default function App() {
       <div>
         <p className="eyebrow"><Trophy size={16}/> FIFA World Cup 2026</p>
         <h1>全試合 放映スケジュール</h1>
-        <p className="lead">日本時間表示。全104試合を検索・ラウンド別・日本戦だけで絞り込みできます。</p>
+        <p className="lead">日本時間表示。表示時に試合結果を取得し、1分ごとに自動更新します。</p>
       </div>
       <div className="summary">
         <strong>{filtered.length}</strong><span>matches</span>
@@ -154,16 +202,19 @@ export default function App() {
       <label className="search"><Search size={18}/><input value={q} onChange={e=>setQ(e.target.value)} placeholder="国名・放送局で検索" /></label>
       <select value={round} onChange={e=>setRound(e.target.value)}>{rounds.map(r => <option key={r}>{r}</option>)}</select>
       <button className={onlyJapan ? 'active' : ''} onClick={() => setOnlyJapan(v => !v)}><Star size={16}/>日本戦</button>
+      <button onClick={refreshResults} disabled={loadingResults}><RefreshCw size={16}/>{loadingResults ? '更新中' : '結果更新'}</button>
     </section>
 
-    <p className="note"><Tv size={16}/> DAZNは全試合ライブ配信。地上波・BSの個別割当は確定次第、各試合の broadcast を差し替えてください。</p>
+    <p className="note"><Tv size={16}/> DAZNは全試合ライブ配信。試合結果はVercel API Route経由で取得します。{lastUpdated && ` 最終更新: ${lastUpdated.toLocaleTimeString('ja-JP')}`}</p>
+    {resultError && <p className="error">{resultError}</p>}
 
     {Object.entries(grouped).map(([date, games]) => <section className="day" key={date}>
       <h2><CalendarDays size={19}/>{date}</h2>
       <div className="grid">
         {games.map(m => <article className={m.home === 'Japan' || m.away === 'Japan' ? 'card japan' : 'card'} key={m.id}>
           <div className="meta"><span>{m.round}</span><b>{fmtTime(m.datetime)}</b></div>
-          <div className="teams"><span>{m.home}</span><em>vs</em><span>{m.away}</span></div>
+          <div className="teams"><span>{m.home}</span><em>{m.live?.hasScore ? `${m.live.homeScore} - ${m.live.awayScore}` : 'vs'}</em><span>{m.away}</span></div>
+          {m.live?.status && <div className={`status ${m.live.completed ? 'done' : ''}`}>{m.live.status}</div>}
           <div className="broadcast"><Tv size={15}/>{m.broadcast}</div>
         </article>)}
       </div>
