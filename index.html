@@ -14,7 +14,7 @@
       <div class="heroCard">
         <p class="eyebrow">⚽ FIFA World Cup 2026</p>
         <h1>全試合 放映スケジュール</h1>
-        <p class="lead">日本時間表示。ページを開くたびに結果取得を試み、1分ごとに自動更新します。1ファイルだけでGitHub/Vercelに置けます。</p>
+        <p class="lead">日本時間表示。ページを開くたびに外部APIから結果取得を試み、取得できない試合はHTML内の埋め込み結果で補完します。1ファイルだけでGitHub/Vercelに置けます。</p>
       </div>
       <div class="summary"><strong id="count">104</strong><span>matches</span></div>
     </section>
@@ -25,7 +25,7 @@
       <button id="refresh">🔄 結果更新</button>
       <button id="reset">クリア</button>
     </section>
-    <p class="note" id="note">📺 DAZNは全試合ライブ配信。地上波は確定情報に合わせてbroadcast欄を更新してください。</p>
+    <p class="note" id="note">📺 DAZNは全試合ライブ配信。結果は外部API＋埋め込み結果で補完表示します。</p>
     <p class="error" id="error" style="display:none"></p>
     <div id="list"></div>
   </main>
@@ -73,7 +73,13 @@ async function fetchResults(){
     catch(e){ err=String(e.message||e); }
   }
   const embedded = MATCHES.filter(m=>m.staticStatus).map(m=>{ const o={date:m.datetime,dateKey:dateKey(m.datetime),home:m.home,away:m.away,homeNorm:normalizeName(m.home),awayNorm:normalizeName(m.away),homeScore:m.staticHomeScore,awayScore:m.staticAwayScore,hasScore:true,status:m.staticStatus,completed:true,source:'embedded'}; const keys=makeKeys(o.dateKey,o.home,o.away); o.key=keys[0]; o.reverseKey=keys[1]; o.teamSetKey=keys[2]; return o; });
-  const map = new Map(); [...embedded, ...pulled].forEach(r=>map.set(r.teamSetKey, r));
+  const map = new Map();
+  embedded.forEach(r=>map.set(r.teamSetKey, r));
+  pulled.forEach(r=>{
+    const current = map.get(r.teamSetKey);
+    // 外部APIにスコアが無い試合で、埋め込み済みの結果を上書きしない
+    if(!current || r.hasScore || !current.hasScore) map.set(r.teamSetKey, r);
+  });
   state.results=[...map.values()]; state.byKey={}; state.results.forEach(r=>[r.key,r.reverseKey,r.teamSetKey].forEach(k=>state.byKey[k]=r));
   state.lastUpdated=new Date(); state.loading=false; state.error = pulled.length ? '' : '外部APIから結果を取得できない場合は、埋め込み済みの結果だけ表示します。';
   render();
@@ -89,10 +95,16 @@ function render(){
 }
 function cardHtml(m){
   const r=findResult(m); const isJapan=m.home==='Japan'||m.away==='Japan';
-  const score = r?.hasScore ? `${r.homeScore} - ${r.awayScore}` : 'vs';
-  const status = r?.status ? r.status : '結果未取得 / 試合前';
-  const cls = r?.completed ? 'done' : (r?.hasScore ? 'live' : '');
-  return `<article class="card ${isJapan?'japan':''}"><div class="meta"><span>${m.round}</span><b>${fmtTime(m.datetime)}</b></div><div class="teams"><span>${m.home}</span><em>${score}</em><span>${m.away}</span></div><div class="status ${cls}">${status}${r?.source ? ' · '+r.source : ''}</div><div class="broadcast">📺 ${m.broadcast}</div></article>`;
+  const fallbackHasScore = m.staticHomeScore !== undefined && m.staticAwayScore !== undefined;
+  const hasScore = r?.hasScore || fallbackHasScore;
+  const homeScore = r?.hasScore ? r.homeScore : m.staticHomeScore;
+  const awayScore = r?.hasScore ? r.awayScore : m.staticAwayScore;
+  const score = hasScore ? `${homeScore} - ${awayScore}` : 'vs';
+  const status = r?.status || m.staticStatus || '結果未取得 / 試合前';
+  const completed = r?.completed || m.staticStatus === 'FT';
+  const source = r?.source || (fallbackHasScore ? 'embedded' : '');
+  const cls = completed ? 'done' : (hasScore ? 'live' : '');
+  return `<article class="card ${isJapan?'japan':''}"><div class="meta"><span>${m.round}</span><b>${fmtTime(m.datetime)}</b></div><div class="teams"><span>${m.home}</span><em>${score}</em><span>${m.away}</span></div><div class="status ${cls}">${status}${source ? ' · '+source : ''}</div><div class="broadcast">📺 ${m.broadcast}</div></article>`;
 }
 function init(){
   const rounds=['すべて',...new Set(MATCHES.map(m=>m.round))]; $('round').innerHTML=rounds.map(r=>`<option>${r}</option>`).join('');
