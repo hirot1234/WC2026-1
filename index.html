@@ -5,113 +5,241 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ワールドカップ2026 全試合放映スケジュール</title>
   <style>
-    :root{--bg:#0b1020;--panel:#131a2e;--panel2:#18213a;--text:#eef3ff;--muted:#9aa8c7;--line:#26324f;--accent:#7dd3fc;--accent2:#facc15;--danger:#fca5a5;--ok:#86efac}*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(160deg,#08111f,#111827 50%,#0f172a);color:var(--text)}.app{max-width:1180px;margin:0 auto;padding:22px 14px 44px}.hero{display:flex;gap:18px;align-items:stretch;justify-content:space-between;margin-bottom:18px}.heroCard{flex:1;background:linear-gradient(135deg,rgba(125,211,252,.18),rgba(250,204,21,.10));border:1px solid rgba(255,255,255,.12);border-radius:24px;padding:22px;box-shadow:0 20px 50px rgba(0,0,0,.25)}.eyebrow{margin:0 0 8px;color:var(--accent);font-weight:800;letter-spacing:.04em;font-size:13px}.hero h1{font-size:clamp(27px,5vw,52px);line-height:1.04;margin:0 0 10px}.lead{margin:0;color:#cbd5e1;line-height:1.6}.summary{min-width:135px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:24px;display:flex;flex-direction:column;align-items:center;justify-content:center}.summary strong{font-size:44px}.summary span{color:var(--muted);font-weight:700}.toolbar{position:sticky;top:0;z-index:5;display:grid;grid-template-columns:1.4fr .8fr repeat(3,auto);gap:10px;margin:18px 0;padding:10px;background:rgba(11,16,32,.84);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.08);border-radius:18px}.search,input,select,button{font:inherit}.search{display:flex;align-items:center;gap:8px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:0 12px}.search input{width:100%;background:transparent;border:0;outline:0;color:var(--text);padding:12px 0}select,button{border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:14px;padding:11px 12px}button{font-weight:800;cursor:pointer}button.active{background:rgba(250,204,21,.18);border-color:rgba(250,204,21,.55)}button:disabled{opacity:.55}.note,.error{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:8px 0 16px;color:var(--muted);font-size:14px}.error{color:var(--danger)}.day{margin-top:22px}.day h2{font-size:20px;margin:0 0 12px;display:flex;gap:8px;align-items:center}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.card{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:18px;padding:15px;box-shadow:0 10px 28px rgba(0,0,0,.16)}.card.japan{border-color:rgba(250,204,21,.75);box-shadow:0 0 0 1px rgba(250,204,21,.18),0 10px 30px rgba(250,204,21,.06)}.meta{display:flex;align-items:center;justify-content:space-between;color:var(--muted);font-size:13px;margin-bottom:12px}.meta span{background:rgba(255,255,255,.07);padding:4px 8px;border-radius:99px}.meta b{color:#dbeafe}.teams{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;font-weight:900;font-size:18px}.teams span:last-child{text-align:right}.teams em{font-style:normal;color:var(--accent2);background:rgba(250,204,21,.1);padding:5px 8px;border-radius:10px;white-space:nowrap}.status{margin-top:10px;color:var(--muted);font-size:13px}.status.done{color:var(--ok)}.status.live{color:var(--accent2)}.broadcast{margin-top:12px;border-top:1px solid var(--line);padding-top:10px;color:#cbd5e1;font-size:14px;display:flex;gap:7px;align-items:center}.empty{padding:30px;text-align:center;color:var(--muted);background:var(--panel);border:1px solid var(--line);border-radius:18px}@media(max-width:760px){.hero{flex-direction:column}.summary{min-height:105px}.toolbar{grid-template-columns:1fr 1fr}.search{grid-column:1/-1}.grid{grid-template-columns:1fr}.app{padding:14px 10px 34px}.teams{font-size:16px}}
+    :root{--bg:#f3f6fb;--panel:#fff;--text:#102033;--muted:#667085;--line:#dbe3ef;--accent:#0f766e;--accent2:#e11d48;--ok:#0f766e;--warn:#b45309}
+    *{box-sizing:border-box} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(180deg,#edf4ff,#f8fafc);color:var(--text)}
+    .app{max-width:1180px;margin:0 auto;padding:18px 14px 42px}
+    .hero{background:linear-gradient(135deg,#0f172a,#164e63);color:white;border-radius:24px;padding:22px;margin-bottom:14px;box-shadow:0 16px 40px rgba(15,23,42,.18)}
+    .hero p{margin:6px 0 0;color:#d8eef7;line-height:1.55} h1{margin:0;font-size:clamp(26px,5vw,48px);line-height:1.08}
+    .toolbar{position:sticky;top:0;z-index:10;display:grid;grid-template-columns:1.2fr .8fr repeat(3,auto);gap:10px;background:rgba(248,250,252,.86);backdrop-filter:blur(14px);padding:10px;border:1px solid var(--line);border-radius:18px;margin:14px 0}
+    input,select,button{font:inherit;border:1px solid var(--line);border-radius:14px;background:white;color:var(--text);padding:11px 12px}
+    input{width:100%} button{font-weight:800} button.active{border-color:#f43f5e;background:#fff1f2;color:#be123c}
+    .note,.error{font-size:14px;border-radius:14px;padding:10px 12px;margin:10px 0;border:1px solid #fde68a;background:#fffbeb;color:#854d0e} .error{display:none;border-color:#fecaca;background:#fef2f2;color:#991b1b}
+    .stats{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 2px} .pill{background:white;border:1px solid var(--line);border-radius:999px;padding:7px 10px;color:#334155;font-weight:700;font-size:13px}
+    .day{margin-top:24px} .day h2{font-size:19px;margin:0 0 12px} .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+    .card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:0 8px 24px rgba(15,23,42,.07)} .card.japan{border-color:#f43f5e;box-shadow:0 0 0 1px #f43f5e22,0 8px 24px rgba(244,63,94,.1)}
+    .meta{display:flex;justify-content:space-between;gap:8px;color:var(--muted);font-size:12px;margin-bottom:12px} .meta b{color:#0f172a;font-size:16px}
+    .teams{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;font-size:17px;font-weight:900} .teams span:last-child{text-align:right} .teams em{font-style:normal;background:#f1f5f9;border-radius:10px;padding:5px 8px;white-space:nowrap;color:#475569}
+    .status{margin-top:10px;font-size:13px;color:var(--muted)} .status.done{color:var(--ok);font-weight:800} .status.live{color:var(--warn);font-weight:800}
+    .broadcast{margin-top:12px;padding-top:10px;border-top:1px solid var(--line);font-size:13px;color:#0f766e;font-weight:700} .empty{background:white;border:1px solid var(--line);border-radius:18px;padding:28px;text-align:center;color:var(--muted)}
+    @media(max-width:860px){.toolbar{grid-template-columns:1fr 1fr} .toolbar input{grid-column:1/-1} .grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:620px){.app{padding:12px 10px 32px} .grid{grid-template-columns:1fr} .teams{font-size:16px}}
   </style>
 </head>
 <body>
-  <main class="app">
-    <section class="hero">
-      <div class="heroCard">
-        <p class="eyebrow">⚽ FIFA World Cup 2026</p>
-        <h1>全試合 放映スケジュール</h1>
-        <p class="lead">日本時間表示。ページを開くたびに外部APIから結果取得を試み、取得できない試合はHTML内の埋め込み結果で補完します。1ファイルだけでGitHub/Vercelに置けます。</p>
-      </div>
-      <div class="summary"><strong id="count">104</strong><span>matches</span></div>
-    </section>
-    <section class="toolbar">
-      <label class="search">🔎<input id="q" placeholder="国名・放送局で検索"></label>
-      <select id="round"></select>
-      <button id="japan">⭐ 日本戦</button>
-      <button id="refresh">🔄 結果更新</button>
-      <button id="reset">クリア</button>
-    </section>
-    <p class="note" id="note">📺 DAZNは全試合ライブ配信。結果は外部API＋埋め込み結果で補完表示します。</p>
-    <p class="error" id="error" style="display:none"></p>
-    <div id="list"></div>
-  </main>
+<main class="app">
+  <section class="hero">
+    <h1>ワールドカップ2026 全試合放映スケジュール</h1>
+    <p>日本時間表示。ページ表示時にESPNの公開スコアボードから試合カード・結果を取得し、未取得時は埋め込みデータで補完します。GitHubにはこの <b>index.html</b> 1ファイルだけ置けばOKです。</p>
+  </section>
+  <section class="toolbar">
+    <input id="q" placeholder="国名・放送局で検索">
+    <select id="round"></select>
+    <button id="japan">⭐ 日本戦</button>
+    <button id="refresh">🔄 更新</button>
+    <button id="reset">クリア</button>
+  </section>
+  <div class="note" id="note">読み込み中…</div>
+  <div class="error" id="error"></div>
+  <div class="stats"><span class="pill" id="count">0 matches</span><span class="pill" id="source">source: fallback</span></div>
+  <div id="list"></div>
+</main>
 <script>
-const MATCHES = [{"datetime":"2026-06-12T04:00:00+09:00","round":"Group A","home":"Mexico","away":"South Africa","broadcast":"DAZN","id":1,"staticHomeScore":2,"staticAwayScore":0,"staticStatus":"FT"},{"datetime":"2026-06-12T11:00:00+09:00","round":"Group A","home":"South Korea","away":"Czechia","broadcast":"DAZN","id":2,"staticHomeScore":2,"staticAwayScore":1,"staticStatus":"FT"},{"datetime":"2026-06-13T04:00:00+09:00","round":"Group B","home":"Canada","away":"Bosnia and Herzegovina","broadcast":"DAZN","id":3,"staticHomeScore":1,"staticAwayScore":1,"staticStatus":"FT"},{"datetime":"2026-06-13T10:00:00+09:00","round":"Group D","home":"United States","away":"Paraguay","broadcast":"DAZN","id":4,"staticHomeScore":4,"staticAwayScore":1,"staticStatus":"FT"},{"datetime":"2026-06-14T04:00:00+09:00","round":"Group B","home":"Qatar","away":"Switzerland","broadcast":"DAZN","id":5,"staticHomeScore":1,"staticAwayScore":1,"staticStatus":"FT"},{"datetime":"2026-06-14T07:00:00+09:00","round":"Group C","home":"Brazil","away":"Morocco","broadcast":"DAZN","id":6,"staticHomeScore":1,"staticAwayScore":1,"staticStatus":"FT"},{"datetime":"2026-06-14T10:00:00+09:00","round":"Group C","home":"Haiti","away":"Scotland","broadcast":"DAZN","id":7,"staticHomeScore":0,"staticAwayScore":1,"staticStatus":"FT"},{"datetime":"2026-06-14T13:00:00+09:00","round":"Group D","home":"Australia","away":"Turkey","broadcast":"DAZN","id":8,"staticHomeScore":2,"staticAwayScore":0,"staticStatus":"FT"},{"datetime":"2026-06-15T02:00:00+09:00","round":"Group E","home":"Germany","away":"Curacao","broadcast":"DAZN","id":9,"staticHomeScore":7,"staticAwayScore":1,"staticStatus":"FT"},{"datetime":"2026-06-15T05:00:00+09:00","round":"Group F","home":"Netherlands","away":"Japan","broadcast":"DAZN / 日本戦無料 / NHK","id":10,"staticHomeScore":2,"staticAwayScore":2,"staticStatus":"FT"},{"datetime":"2026-06-15T08:00:00+09:00","round":"Group E","home":"Ivory Coast","away":"Ecuador","broadcast":"DAZN","id":11,"staticHomeScore":1,"staticAwayScore":0,"staticStatus":"FT"},{"datetime":"2026-06-15T11:00:00+09:00","round":"Group F","home":"Sweden","away":"Tunisia","broadcast":"DAZN","id":12,"staticHomeScore":5,"staticAwayScore":1,"staticStatus":"FT"},{"datetime":"2026-06-16T01:00:00+09:00","round":"Group H","home":"Spain","away":"Cape Verde","broadcast":"DAZN","id":13,"staticHomeScore":0,"staticAwayScore":0,"staticStatus":"FT"},{"datetime":"2026-06-16T04:00:00+09:00","round":"Group G","home":"Belgium","away":"Egypt","broadcast":"DAZN","id":14,"staticHomeScore":1,"staticAwayScore":1,"staticStatus":"FT"},{"datetime":"2026-06-16T07:00:00+09:00","round":"Group H","home":"Saudi Arabia","away":"Uruguay","broadcast":"DAZN","id":15,"staticHomeScore":1,"staticAwayScore":1,"staticStatus":"FT"},{"datetime":"2026-06-16T10:00:00+09:00","round":"Group G","home":"Iran","away":"New Zealand","broadcast":"DAZN","id":16,"staticHomeScore":2,"staticAwayScore":2,"staticStatus":"FT"},{"datetime":"2026-06-17T04:00:00+09:00","round":"Group I","home":"France","away":"Senegal","broadcast":"DAZN","id":17,"staticHomeScore":3,"staticAwayScore":1,"staticStatus":"FT"},{"datetime":"2026-06-17T07:00:00+09:00","round":"Group I","home":"Iraq","away":"Norway","broadcast":"DAZN","id":18,"staticHomeScore":1,"staticAwayScore":4,"staticStatus":"FT"},{"datetime":"2026-06-17T10:00:00+09:00","round":"Group J","home":"Argentina","away":"Algeria","broadcast":"DAZN","id":19,"staticHomeScore":3,"staticAwayScore":0,"staticStatus":"FT"},{"datetime":"2026-06-17T13:00:00+09:00","round":"Group J","home":"Austria","away":"Jordan","broadcast":"DAZN","id":20,"staticHomeScore":3,"staticAwayScore":1,"staticStatus":"FT"},{"datetime":"2026-06-18T02:00:00+09:00","round":"Group K","home":"Portugal","away":"DR Congo","broadcast":"DAZN","id":21,"staticHomeScore":1,"staticAwayScore":1,"staticStatus":"FT"},{"datetime":"2026-06-18T05:00:00+09:00","round":"Group L","home":"England","away":"Croatia","broadcast":"DAZN","id":22,"staticHomeScore":4,"staticAwayScore":2,"staticStatus":"FT"},{"datetime":"2026-06-18T08:00:00+09:00","round":"Group L","home":"Ghana","away":"Panama","broadcast":"DAZN","id":23,"staticHomeScore":1,"staticAwayScore":0,"staticStatus":"FT"},{"datetime":"2026-06-18T11:00:00+09:00","round":"Group K","home":"Uzbekistan","away":"Colombia","broadcast":"DAZN","id":24,"staticHomeScore":1,"staticAwayScore":3,"staticStatus":"FT"},{"datetime":"2026-06-19T01:00:00+09:00","round":"Group A","home":"Czechia","away":"South Africa","broadcast":"DAZN","id":25,"staticHomeScore":1,"staticAwayScore":1,"staticStatus":"FT"},{"datetime":"2026-06-19T04:00:00+09:00","round":"Group B","home":"Switzerland","away":"Bosnia and Herzegovina","broadcast":"DAZN","id":26,"staticHomeScore":4,"staticAwayScore":1,"staticStatus":"FT"},{"datetime":"2026-06-19T07:00:00+09:00","round":"Group B","home":"Canada","away":"Qatar","broadcast":"DAZN","id":27,"staticHomeScore":6,"staticAwayScore":0,"staticStatus":"FT"},{"datetime":"2026-06-19T10:00:00+09:00","round":"Group A","home":"Mexico","away":"South Korea","broadcast":"DAZN","id":28,"staticHomeScore":1,"staticAwayScore":0,"staticStatus":"FT"},{"datetime":"2026-06-20T04:00:00+09:00","round":"Group D","home":"United States","away":"Australia","broadcast":"DAZN","id":29,"staticHomeScore":2,"staticAwayScore":0,"staticStatus":"FT"},{"datetime":"2026-06-20T07:00:00+09:00","round":"Group C","home":"Scotland","away":"Morocco","broadcast":"DAZN","id":30,"staticHomeScore":0,"staticAwayScore":1,"staticStatus":"FT"},{"datetime":"2026-06-20T09:30:00+09:00","round":"Group C","home":"Brazil","away":"Haiti","broadcast":"DAZN","id":31,"staticHomeScore":3,"staticAwayScore":0,"staticStatus":"FT"},{"datetime":"2026-06-20T12:00:00+09:00","round":"Group D","home":"Turkey","away":"Paraguay","broadcast":"DAZN","id":32,"staticHomeScore":0,"staticAwayScore":1,"staticStatus":"FT"},{"datetime":"2026-06-21T02:00:00+09:00","round":"Group F","home":"Netherlands","away":"Sweden","broadcast":"DAZN","id":33,"staticHomeScore":5,"staticAwayScore":1,"staticStatus":"FT"},{"datetime":"2026-06-21T05:00:00+09:00","round":"Group E","home":"Germany","away":"Ivory Coast","broadcast":"DAZN","id":34,"staticHomeScore":2,"staticAwayScore":1,"staticStatus":"FT"},{"datetime":"2026-06-21T09:00:00+09:00","round":"Group E","home":"Ecuador","away":"Curacao","broadcast":"DAZN","id":35,"staticHomeScore":0,"staticAwayScore":0,"staticStatus":"FT"},{"datetime":"2026-06-21T13:00:00+09:00","round":"Group F","home":"Tunisia","away":"Japan","broadcast":"DAZN / 日本戦無料 / 日本テレビ","id":36,"staticHomeScore":0,"staticAwayScore":4,"staticStatus":"FT"},{"datetime":"2026-06-22T01:00:00+09:00","round":"Group H","home":"Spain","away":"Saudi Arabia","broadcast":"DAZN","id":37},{"datetime":"2026-06-22T04:00:00+09:00","round":"Group G","home":"Belgium","away":"Iran","broadcast":"DAZN","id":38},{"datetime":"2026-06-22T07:00:00+09:00","round":"Group H","home":"Uruguay","away":"Cape Verde","broadcast":"DAZN","id":39},{"datetime":"2026-06-22T10:00:00+09:00","round":"Group G","home":"New Zealand","away":"Egypt","broadcast":"DAZN","id":40},{"datetime":"2026-06-23T02:00:00+09:00","round":"Group J","home":"Argentina","away":"Austria","broadcast":"DAZN","id":41},{"datetime":"2026-06-23T06:00:00+09:00","round":"Group I","home":"France","away":"Iraq","broadcast":"DAZN","id":42},{"datetime":"2026-06-23T09:00:00+09:00","round":"Group I","home":"Norway","away":"Senegal","broadcast":"DAZN","id":43},{"datetime":"2026-06-23T12:00:00+09:00","round":"Group J","home":"Jordan","away":"Algeria","broadcast":"DAZN","id":44},{"datetime":"2026-06-24T02:00:00+09:00","round":"Group K","home":"Portugal","away":"Uzbekistan","broadcast":"DAZN","id":45},{"datetime":"2026-06-24T05:00:00+09:00","round":"Group L","home":"England","away":"Ghana","broadcast":"DAZN","id":46},{"datetime":"2026-06-24T08:00:00+09:00","round":"Group L","home":"Panama","away":"Croatia","broadcast":"DAZN","id":47},{"datetime":"2026-06-24T11:00:00+09:00","round":"Group K","home":"Colombia","away":"DR Congo","broadcast":"DAZN","id":48},{"datetime":"2026-06-25T04:00:00+09:00","round":"Group B","home":"Switzerland","away":"Canada","broadcast":"DAZN","id":49},{"datetime":"2026-06-25T04:00:00+09:00","round":"Group B","home":"Bosnia and Herzegovina","away":"Qatar","broadcast":"DAZN","id":50},{"datetime":"2026-06-25T07:00:00+09:00","round":"Group C","home":"Scotland","away":"Brazil","broadcast":"DAZN","id":51},{"datetime":"2026-06-25T07:00:00+09:00","round":"Group C","home":"Morocco","away":"Haiti","broadcast":"DAZN","id":52},{"datetime":"2026-06-25T10:00:00+09:00","round":"Group A","home":"Czechia","away":"Mexico","broadcast":"DAZN","id":53},{"datetime":"2026-06-25T10:00:00+09:00","round":"Group A","home":"South Africa","away":"South Korea","broadcast":"DAZN","id":54},{"datetime":"2026-06-26T05:00:00+09:00","round":"Group E","home":"Ecuador","away":"Germany","broadcast":"DAZN","id":55},{"datetime":"2026-06-26T05:00:00+09:00","round":"Group E","home":"Curacao","away":"Ivory Coast","broadcast":"DAZN","id":56},{"datetime":"2026-06-26T08:00:00+09:00","round":"Group F","home":"Tunisia","away":"Netherlands","broadcast":"DAZN","id":57},{"datetime":"2026-06-26T08:00:00+09:00","round":"Group F","home":"Japan","away":"Sweden","broadcast":"DAZN / 日本戦無料 / NHK","id":58},{"datetime":"2026-06-26T11:00:00+09:00","round":"Group D","home":"Turkey","away":"United States","broadcast":"DAZN","id":59},{"datetime":"2026-06-26T11:00:00+09:00","round":"Group D","home":"Paraguay","away":"Australia","broadcast":"DAZN","id":60},{"datetime":"2026-06-27T04:00:00+09:00","round":"Group I","home":"Norway","away":"France","broadcast":"DAZN","id":61},{"datetime":"2026-06-27T04:00:00+09:00","round":"Group I","home":"Senegal","away":"Iraq","broadcast":"DAZN","id":62},{"datetime":"2026-06-27T09:00:00+09:00","round":"Group H","home":"Uruguay","away":"Spain","broadcast":"DAZN","id":63},{"datetime":"2026-06-27T09:00:00+09:00","round":"Group H","home":"Cape Verde","away":"Saudi Arabia","broadcast":"DAZN","id":64},{"datetime":"2026-06-27T12:00:00+09:00","round":"Group G","home":"New Zealand","away":"Belgium","broadcast":"DAZN","id":65},{"datetime":"2026-06-27T12:00:00+09:00","round":"Group G","home":"Egypt","away":"Iran","broadcast":"DAZN","id":66},{"datetime":"2026-06-28T06:00:00+09:00","round":"Group L","home":"Panama","away":"England","broadcast":"DAZN","id":67},{"datetime":"2026-06-28T06:00:00+09:00","round":"Group L","home":"Croatia","away":"Ghana","broadcast":"DAZN","id":68},{"datetime":"2026-06-28T08:30:00+09:00","round":"Group K","home":"Colombia","away":"Portugal","broadcast":"DAZN","id":69},{"datetime":"2026-06-28T08:30:00+09:00","round":"Group K","home":"DR Congo","away":"Uzbekistan","broadcast":"DAZN","id":70},{"datetime":"2026-06-28T11:00:00+09:00","round":"Group J","home":"Jordan","away":"Argentina","broadcast":"DAZN","id":71},{"datetime":"2026-06-28T11:00:00+09:00","round":"Group J","home":"Algeria","away":"Austria","broadcast":"DAZN","id":72},{"datetime":"2026-06-29T04:00:00+09:00","round":"Round of 32","home":"2nd Group A","away":"2nd Group B","broadcast":"DAZN","id":73},{"datetime":"2026-06-30T02:00:00+09:00","round":"Round of 32","home":"1st Group C","away":"2nd Group F","broadcast":"DAZN","id":74},{"datetime":"2026-06-30T05:30:00+09:00","round":"Round of 32","home":"1st Group E","away":"3rd Group A/B/C/D/F","broadcast":"DAZN","id":75},{"datetime":"2026-06-30T10:00:00+09:00","round":"Round of 32","home":"1st Group F","away":"2nd Group C","broadcast":"DAZN","id":76},{"datetime":"2026-07-01T02:00:00+09:00","round":"Round of 32","home":"2nd Group E","away":"2nd Group I","broadcast":"DAZN","id":77},{"datetime":"2026-07-01T06:00:00+09:00","round":"Round of 32","home":"1st Group I","away":"3rd Group C/D/F/G/H","broadcast":"DAZN","id":78},{"datetime":"2026-07-01T10:00:00+09:00","round":"Round of 32","home":"1st Group A","away":"3rd Group C/E/F/H/I","broadcast":"DAZN","id":79},{"datetime":"2026-07-02T01:00:00+09:00","round":"Round of 32","home":"1st Group L","away":"3rd Group E/H/I/J/K","broadcast":"DAZN","id":80},{"datetime":"2026-07-02T05:00:00+09:00","round":"Round of 32","home":"1st Group G","away":"3rd Group A/E/H/I/J","broadcast":"DAZN","id":81},{"datetime":"2026-07-02T09:00:00+09:00","round":"Round of 32","home":"1st Group D","away":"3rd Group B/E/F/I/J","broadcast":"DAZN","id":82},{"datetime":"2026-07-03T04:00:00+09:00","round":"Round of 32","home":"1st Group H","away":"2nd Group J","broadcast":"DAZN","id":83},{"datetime":"2026-07-03T08:00:00+09:00","round":"Round of 32","home":"2nd Group K","away":"2nd Group L","broadcast":"DAZN","id":84},{"datetime":"2026-07-03T12:00:00+09:00","round":"Round of 32","home":"1st Group B","away":"3rd Group E/F/G/I/J","broadcast":"DAZN","id":85},{"datetime":"2026-07-04T03:00:00+09:00","round":"Round of 32","home":"2nd Group D","away":"2nd Group G","broadcast":"DAZN","id":86},{"datetime":"2026-07-04T07:00:00+09:00","round":"Round of 32","home":"1st Group J","away":"2nd Group H","broadcast":"DAZN","id":87},{"datetime":"2026-07-04T10:30:00+09:00","round":"Round of 32","home":"1st Group K","away":"3rd Group D/E/I/J/L","broadcast":"DAZN","id":88},{"datetime":"2026-07-05T02:00:00+09:00","round":"Round of 16","home":"Winner M73","away":"Winner M75","broadcast":"DAZN","id":89},{"datetime":"2026-07-05T06:00:00+09:00","round":"Round of 16","home":"Winner M74","away":"Winner M77","broadcast":"DAZN","id":90},{"datetime":"2026-07-06T05:00:00+09:00","round":"Round of 16","home":"Winner M76","away":"Winner M78","broadcast":"DAZN","id":91},{"datetime":"2026-07-06T09:00:00+09:00","round":"Round of 16","home":"Winner M79","away":"Winner M80","broadcast":"DAZN","id":92},{"datetime":"2026-07-07T04:00:00+09:00","round":"Round of 16","home":"Winner M84","away":"Winner M85","broadcast":"DAZN","id":93},{"datetime":"2026-07-07T09:00:00+09:00","round":"Round of 16","home":"Winner M81","away":"Winner M82","broadcast":"DAZN","id":94},{"datetime":"2026-07-08T01:00:00+09:00","round":"Round of 16","home":"Winner M88","away":"Winner M86","broadcast":"DAZN","id":95},{"datetime":"2026-07-08T05:00:00+09:00","round":"Round of 16","home":"Winner M83","away":"Winner M87","broadcast":"DAZN","id":96},{"datetime":"2026-07-10T05:00:00+09:00","round":"Quarterfinal","home":"Winner R16-1","away":"Winner R16-2","broadcast":"DAZN","id":97},{"datetime":"2026-07-11T04:00:00+09:00","round":"Quarterfinal","home":"Winner R16-5","away":"Winner R16-6","broadcast":"DAZN","id":98},{"datetime":"2026-07-12T06:00:00+09:00","round":"Quarterfinal","home":"Winner R16-3","away":"Winner R16-4","broadcast":"DAZN","id":99},{"datetime":"2026-07-12T10:00:00+09:00","round":"Quarterfinal","home":"Winner R16-7","away":"Winner R16-8","broadcast":"DAZN","id":100},{"datetime":"2026-07-15T04:00:00+09:00","round":"Semifinal","home":"Winner QF-1","away":"Winner QF-2","broadcast":"DAZN","id":101},{"datetime":"2026-07-16T04:00:00+09:00","round":"Semifinal","home":"Winner QF-3","away":"Winner QF-4","broadcast":"DAZN","id":102},{"datetime":"2026-07-19T06:00:00+09:00","round":"3rd Place Playoff","home":"Loser SF-1","away":"Loser SF-2","broadcast":"DAZN","id":103},{"datetime":"2026-07-20T04:00:00+09:00","round":"Final","home":"Winner SF-1","away":"Winner SF-2","broadcast":"DAZN / NHK","id":104}];
-const TEAM_ALIASES = {usa:'unitedstates',unitedstatesofamerica:'unitedstates',usmnt:'unitedstates',korearepublic:'southkorea',republicofkorea:'southkorea',korea:'southkorea',czechrepublic:'czechia',bosniaherzegovina:'bosniaandherzegovina',bosnia:'bosniaandherzegovina',cotedivoire:'ivorycoast',capverdeislands:'capeverde',drcongo:'drcongo',congodr:'drcongo',democraticrepublicofcongo:'drcongo'};
-let state = { q:'', round:'すべて', onlyJapan:false, results:[], byKey:{}, loading:false, lastUpdated:null, error:'' };
+const FALLBACK_MATCHES = [{"datetime":"2026-06-12T04:00:00+09:00","round":"Group A","home":"Mexico","away":"South Africa","broadcast":"DAZN","id":1,"staticHomeScore":2,"staticAwayScore":0,"staticStatus":"FT"},{"datetime":"2026-06-12T11:00:00+09:00","round":"Group A","home":"South Korea","away":"Czechia","broadcast":"DAZN","id":2,"staticHomeScore":2,"staticAwayScore":1,"staticStatus":"FT"},{"datetime":"2026-06-13T04:00:00+09:00","round":"Group B","home":"Canada","away":"Bosnia and Herzegovina","broadcast":"DAZN","id":3,"staticHomeScore":1,"staticAwayScore":1,"staticStatus":"FT"},{"datetime":"2026-06-13T10:00:00+09:00","round":"Group D","home":"United States","away":"Paraguay","broadcast":"DAZN","id":4,"staticHomeScore":4,"staticAwayScore":1,"staticStatus":"FT"},{"datetime":"2026-06-14T04:00:00+09:00","round":"Group B","home":"Qatar","away":"Switzerland","broadcast":"DAZN","id":5,"staticHomeScore":1,"staticAwayScore":1,"staticStatus":"FT"},{"datetime":"2026-06-14T07:00:00+09:00","round":"Group C","home":"Brazil","away":"Morocco","broadcast":"DAZN","id":6,"staticHomeScore":1,"staticAwayScore":1,"staticStatus":"FT"},{"datetime":"2026-06-14T10:00:00+09:00","round":"Group C","home":"Haiti","away":"Scotland","broadcast":"DAZN","id":7,"staticHomeScore":0,"staticAwayScore":1,"staticStatus":"FT"},{"datetime":"2026-06-14T13:00:00+09:00","round":"Group D","home":"Australia","away":"Turkey","broadcast":"DAZN","id":8,"staticHomeScore":2,"staticAwayScore":0,"staticStatus":"FT"},{"datetime":"2026-06-15T02:00:00+09:00","round":"Group E","home":"Germany","away":"Curacao","broadcast":"DAZN","id":9,"staticHomeScore":7,"staticAwayScore":1,"staticStatus":"FT"},{"datetime":"2026-06-15T05:00:00+09:00","round":"Group F","home":"Netherlands","away":"Japan","broadcast":"DAZN / 日本戦無料 / NHK","id":10,"staticHomeScore":2,"staticAwayScore":2,"staticStatus":"FT"},{"datetime":"2026-06-15T08:00:00+09:00","round":"Group E","home":"Ivory Coast","away":"Ecuador","broadcast":"DAZN","id":11,"staticHomeScore":1,"staticAwayScore":0,"staticStatus":"FT"},{"datetime":"2026-06-15T11:00:00+09:00","round":"Group F","home":"Sweden","away":"Tunisia","broadcast":"DAZN","id":12,"staticHomeScore":5,"staticAwayScore":1,"staticStatus":"FT"},{"datetime":"2026-06-16T01:00:00+09:00","round":"Group H","home":"Spain","away":"Cape Verde","broadcast":"DAZN","id":13,"staticHomeScore":0,"staticAwayScore":0,"staticStatus":"FT"},{"datetime":"2026-06-16T04:00:00+09:00","round":"Group G","home":"Belgium","away":"Egypt","broadcast":"DAZN","id":14,"staticHomeScore":1,"staticAwayScore":1,"staticStatus":"FT"},{"datetime":"2026-06-16T07:00:00+09:00","round":"Group H","home":"Saudi Arabia","away":"Uruguay","broadcast":"DAZN","id":15,"staticHomeScore":1,"staticAwayScore":1,"staticStatus":"FT"},{"datetime":"2026-06-16T10:00:00+09:00","round":"Group G","home":"Iran","away":"New Zealand","broadcast":"DAZN","id":16,"staticHomeScore":2,"staticAwayScore":2,"staticStatus":"FT"},{"datetime":"2026-06-17T04:00:00+09:00","round":"Group I","home":"France","away":"Senegal","broadcast":"DAZN","id":17,"staticHomeScore":3,"staticAwayScore":1,"staticStatus":"FT"},{"datetime":"2026-06-17T07:00:00+09:00","round":"Group I","home":"Iraq","away":"Norway","broadcast":"DAZN","id":18,"staticHomeScore":1,"staticAwayScore":4,"staticStatus":"FT"},{"datetime":"2026-06-17T10:00:00+09:00","round":"Group J","home":"Argentina","away":"Algeria","broadcast":"DAZN","id":19,"staticHomeScore":3,"staticAwayScore":0,"staticStatus":"FT"},{"datetime":"2026-06-17T13:00:00+09:00","round":"Group J","home":"Austria","away":"Jordan","broadcast":"DAZN","id":20,"staticHomeScore":3,"staticAwayScore":1,"staticStatus":"FT"},{"datetime":"2026-06-18T02:00:00+09:00","round":"Group K","home":"Portugal","away":"DR Congo","broadcast":"DAZN","id":21,"staticHomeScore":1,"staticAwayScore":1,"staticStatus":"FT"},{"datetime":"2026-06-18T05:00:00+09:00","round":"Group L","home":"England","away":"Croatia","broadcast":"DAZN","id":22,"staticHomeScore":4,"staticAwayScore":2,"staticStatus":"FT"},{"datetime":"2026-06-18T08:00:00+09:00","round":"Group L","home":"Ghana","away":"Panama","broadcast":"DAZN","id":23,"staticHomeScore":1,"staticAwayScore":0,"staticStatus":"FT"},{"datetime":"2026-06-18T11:00:00+09:00","round":"Group K","home":"Uzbekistan","away":"Colombia","broadcast":"DAZN","id":24,"staticHomeScore":1,"staticAwayScore":3,"staticStatus":"FT"},{"datetime":"2026-06-19T01:00:00+09:00","round":"Group A","home":"Czechia","away":"South Africa","broadcast":"DAZN","id":25,"staticHomeScore":1,"staticAwayScore":1,"staticStatus":"FT"},{"datetime":"2026-06-19T04:00:00+09:00","round":"Group B","home":"Switzerland","away":"Bosnia and Herzegovina","broadcast":"DAZN","id":26,"staticHomeScore":4,"staticAwayScore":1,"staticStatus":"FT"},{"datetime":"2026-06-19T07:00:00+09:00","round":"Group B","home":"Canada","away":"Qatar","broadcast":"DAZN","id":27,"staticHomeScore":6,"staticAwayScore":0,"staticStatus":"FT"},{"datetime":"2026-06-19T10:00:00+09:00","round":"Group A","home":"Mexico","away":"South Korea","broadcast":"DAZN","id":28,"staticHomeScore":1,"staticAwayScore":0,"staticStatus":"FT"},{"datetime":"2026-06-20T04:00:00+09:00","round":"Group D","home":"United States","away":"Australia","broadcast":"DAZN","id":29,"staticHomeScore":2,"staticAwayScore":0,"staticStatus":"FT"},{"datetime":"2026-06-20T07:00:00+09:00","round":"Group C","home":"Scotland","away":"Morocco","broadcast":"DAZN","id":30,"staticHomeScore":0,"staticAwayScore":1,"staticStatus":"FT"},{"datetime":"2026-06-20T09:30:00+09:00","round":"Group C","home":"Brazil","away":"Haiti","broadcast":"DAZN","id":31,"staticHomeScore":3,"staticAwayScore":0,"staticStatus":"FT"},{"datetime":"2026-06-20T12:00:00+09:00","round":"Group D","home":"Turkey","away":"Paraguay","broadcast":"DAZN","id":32,"staticHomeScore":0,"staticAwayScore":1,"staticStatus":"FT"},{"datetime":"2026-06-21T02:00:00+09:00","round":"Group F","home":"Netherlands","away":"Sweden","broadcast":"DAZN","id":33,"staticHomeScore":5,"staticAwayScore":1,"staticStatus":"FT"},{"datetime":"2026-06-21T05:00:00+09:00","round":"Group E","home":"Germany","away":"Ivory Coast","broadcast":"DAZN","id":34,"staticHomeScore":2,"staticAwayScore":1,"staticStatus":"FT"},{"datetime":"2026-06-21T09:00:00+09:00","round":"Group E","home":"Ecuador","away":"Curacao","broadcast":"DAZN","id":35,"staticHomeScore":0,"staticAwayScore":0,"staticStatus":"FT"},{"datetime":"2026-06-21T13:00:00+09:00","round":"Group F","home":"Tunisia","away":"Japan","broadcast":"DAZN / 日本戦無料 / 日本テレビ","id":36,"staticHomeScore":0,"staticAwayScore":4,"staticStatus":"FT"},{"datetime":"2026-06-22T01:00:00+09:00","round":"Group H","home":"Spain","away":"Saudi Arabia","broadcast":"DAZN","id":37},{"datetime":"2026-06-22T04:00:00+09:00","round":"Group G","home":"Belgium","away":"Iran","broadcast":"DAZN","id":38},{"datetime":"2026-06-22T07:00:00+09:00","round":"Group H","home":"Uruguay","away":"Cape Verde","broadcast":"DAZN","id":39},{"datetime":"2026-06-22T10:00:00+09:00","round":"Group G","home":"New Zealand","away":"Egypt","broadcast":"DAZN","id":40},{"datetime":"2026-06-23T02:00:00+09:00","round":"Group J","home":"Argentina","away":"Austria","broadcast":"DAZN","id":41},{"datetime":"2026-06-23T06:00:00+09:00","round":"Group I","home":"France","away":"Iraq","broadcast":"DAZN","id":42},{"datetime":"2026-06-23T09:00:00+09:00","round":"Group I","home":"Norway","away":"Senegal","broadcast":"DAZN","id":43},{"datetime":"2026-06-23T12:00:00+09:00","round":"Group J","home":"Jordan","away":"Algeria","broadcast":"DAZN","id":44},{"datetime":"2026-06-24T02:00:00+09:00","round":"Group K","home":"Portugal","away":"Uzbekistan","broadcast":"DAZN","id":45},{"datetime":"2026-06-24T05:00:00+09:00","round":"Group L","home":"England","away":"Ghana","broadcast":"DAZN","id":46},{"datetime":"2026-06-24T08:00:00+09:00","round":"Group L","home":"Panama","away":"Croatia","broadcast":"DAZN","id":47},{"datetime":"2026-06-24T11:00:00+09:00","round":"Group K","home":"Colombia","away":"DR Congo","broadcast":"DAZN","id":48},{"datetime":"2026-06-25T04:00:00+09:00","round":"Group B","home":"Switzerland","away":"Canada","broadcast":"DAZN","id":49},{"datetime":"2026-06-25T04:00:00+09:00","round":"Group B","home":"Bosnia and Herzegovina","away":"Qatar","broadcast":"DAZN","id":50},{"datetime":"2026-06-25T07:00:00+09:00","round":"Group C","home":"Scotland","away":"Brazil","broadcast":"DAZN","id":51},{"datetime":"2026-06-25T07:00:00+09:00","round":"Group C","home":"Morocco","away":"Haiti","broadcast":"DAZN","id":52},{"datetime":"2026-06-25T10:00:00+09:00","round":"Group A","home":"Czechia","away":"Mexico","broadcast":"DAZN","id":53},{"datetime":"2026-06-25T10:00:00+09:00","round":"Group A","home":"South Africa","away":"South Korea","broadcast":"DAZN","id":54},{"datetime":"2026-06-26T05:00:00+09:00","round":"Group E","home":"Ecuador","away":"Germany","broadcast":"DAZN","id":55},{"datetime":"2026-06-26T05:00:00+09:00","round":"Group E","home":"Curacao","away":"Ivory Coast","broadcast":"DAZN","id":56},{"datetime":"2026-06-26T08:00:00+09:00","round":"Group F","home":"Tunisia","away":"Netherlands","broadcast":"DAZN","id":57},{"datetime":"2026-06-26T08:00:00+09:00","round":"Group F","home":"Japan","away":"Sweden","broadcast":"DAZN / 日本戦無料 / NHK","id":58},{"datetime":"2026-06-26T11:00:00+09:00","round":"Group D","home":"Turkey","away":"United States","broadcast":"DAZN","id":59},{"datetime":"2026-06-26T11:00:00+09:00","round":"Group D","home":"Paraguay","away":"Australia","broadcast":"DAZN","id":60},{"datetime":"2026-06-27T04:00:00+09:00","round":"Group I","home":"Norway","away":"France","broadcast":"DAZN","id":61},{"datetime":"2026-06-27T04:00:00+09:00","round":"Group I","home":"Senegal","away":"Iraq","broadcast":"DAZN","id":62},{"datetime":"2026-06-27T09:00:00+09:00","round":"Group H","home":"Uruguay","away":"Spain","broadcast":"DAZN","id":63},{"datetime":"2026-06-27T09:00:00+09:00","round":"Group H","home":"Cape Verde","away":"Saudi Arabia","broadcast":"DAZN","id":64},{"datetime":"2026-06-27T12:00:00+09:00","round":"Group G","home":"New Zealand","away":"Belgium","broadcast":"DAZN","id":65},{"datetime":"2026-06-27T12:00:00+09:00","round":"Group G","home":"Egypt","away":"Iran","broadcast":"DAZN","id":66},{"datetime":"2026-06-28T06:00:00+09:00","round":"Group L","home":"Panama","away":"England","broadcast":"DAZN","id":67},{"datetime":"2026-06-28T06:00:00+09:00","round":"Group L","home":"Croatia","away":"Ghana","broadcast":"DAZN","id":68},{"datetime":"2026-06-28T08:30:00+09:00","round":"Group K","home":"Colombia","away":"Portugal","broadcast":"DAZN","id":69},{"datetime":"2026-06-28T08:30:00+09:00","round":"Group K","home":"DR Congo","away":"Uzbekistan","broadcast":"DAZN","id":70},{"datetime":"2026-06-28T11:00:00+09:00","round":"Group J","home":"Jordan","away":"Argentina","broadcast":"DAZN","id":71},{"datetime":"2026-06-28T11:00:00+09:00","round":"Group J","home":"Algeria","away":"Austria","broadcast":"DAZN","id":72},{"datetime":"2026-06-29T04:00:00+09:00","round":"Round of 32","home":"2nd Group A","away":"2nd Group B","broadcast":"DAZN","id":73},{"datetime":"2026-06-30T02:00:00+09:00","round":"Round of 32","home":"1st Group C","away":"2nd Group F","broadcast":"DAZN","id":74},{"datetime":"2026-06-30T05:30:00+09:00","round":"Round of 32","home":"1st Group E","away":"3rd Group A/B/C/D/F","broadcast":"DAZN","id":75},{"datetime":"2026-06-30T10:00:00+09:00","round":"Round of 32","home":"1st Group F","away":"2nd Group C","broadcast":"DAZN","id":76},{"datetime":"2026-07-01T02:00:00+09:00","round":"Round of 32","home":"2nd Group E","away":"2nd Group I","broadcast":"DAZN","id":77},{"datetime":"2026-07-01T06:00:00+09:00","round":"Round of 32","home":"1st Group I","away":"3rd Group C/D/F/G/H","broadcast":"DAZN","id":78},{"datetime":"2026-07-01T10:00:00+09:00","round":"Round of 32","home":"1st Group A","away":"3rd Group C/E/F/H/I","broadcast":"DAZN","id":79},{"datetime":"2026-07-02T01:00:00+09:00","round":"Round of 32","home":"1st Group L","away":"3rd Group E/H/I/J/K","broadcast":"DAZN","id":80},{"datetime":"2026-07-02T05:00:00+09:00","round":"Round of 32","home":"1st Group G","away":"3rd Group A/E/H/I/J","broadcast":"DAZN","id":81},{"datetime":"2026-07-02T09:00:00+09:00","round":"Round of 32","home":"1st Group D","away":"3rd Group B/E/F/I/J","broadcast":"DAZN","id":82},{"datetime":"2026-07-03T04:00:00+09:00","round":"Round of 32","home":"1st Group H","away":"2nd Group J","broadcast":"DAZN","id":83},{"datetime":"2026-07-03T08:00:00+09:00","round":"Round of 32","home":"2nd Group K","away":"2nd Group L","broadcast":"DAZN","id":84},{"datetime":"2026-07-03T12:00:00+09:00","round":"Round of 32","home":"1st Group B","away":"3rd Group E/F/G/I/J","broadcast":"DAZN","id":85},{"datetime":"2026-07-04T03:00:00+09:00","round":"Round of 32","home":"2nd Group D","away":"2nd Group G","broadcast":"DAZN","id":86},{"datetime":"2026-07-04T07:00:00+09:00","round":"Round of 32","home":"1st Group J","away":"2nd Group H","broadcast":"DAZN","id":87},{"datetime":"2026-07-04T10:30:00+09:00","round":"Round of 32","home":"1st Group K","away":"3rd Group D/E/I/J/L","broadcast":"DAZN","id":88},{"datetime":"2026-07-05T02:00:00+09:00","round":"Round of 16","home":"Winner M73","away":"Winner M75","broadcast":"DAZN","id":89},{"datetime":"2026-07-05T06:00:00+09:00","round":"Round of 16","home":"Winner M74","away":"Winner M77","broadcast":"DAZN","id":90},{"datetime":"2026-07-06T05:00:00+09:00","round":"Round of 16","home":"Winner M76","away":"Winner M78","broadcast":"DAZN","id":91},{"datetime":"2026-07-06T09:00:00+09:00","round":"Round of 16","home":"Winner M79","away":"Winner M80","broadcast":"DAZN","id":92},{"datetime":"2026-07-07T04:00:00+09:00","round":"Round of 16","home":"Winner M84","away":"Winner M85","broadcast":"DAZN","id":93},{"datetime":"2026-07-07T09:00:00+09:00","round":"Round of 16","home":"Winner M81","away":"Winner M82","broadcast":"DAZN","id":94},{"datetime":"2026-07-08T01:00:00+09:00","round":"Round of 16","home":"Winner M88","away":"Winner M86","broadcast":"DAZN","id":95},{"datetime":"2026-07-08T05:00:00+09:00","round":"Round of 16","home":"Winner M83","away":"Winner M87","broadcast":"DAZN","id":96},{"datetime":"2026-07-10T05:00:00+09:00","round":"Quarterfinal","home":"Winner R16-1","away":"Winner R16-2","broadcast":"DAZN","id":97},{"datetime":"2026-07-11T04:00:00+09:00","round":"Quarterfinal","home":"Winner R16-5","away":"Winner R16-6","broadcast":"DAZN","id":98},{"datetime":"2026-07-12T06:00:00+09:00","round":"Quarterfinal","home":"Winner R16-3","away":"Winner R16-4","broadcast":"DAZN","id":99},{"datetime":"2026-07-12T10:00:00+09:00","round":"Quarterfinal","home":"Winner R16-7","away":"Winner R16-8","broadcast":"DAZN","id":100},{"datetime":"2026-07-15T04:00:00+09:00","round":"Semifinal","home":"Winner QF-1","away":"Winner QF-2","broadcast":"DAZN","id":101},{"datetime":"2026-07-16T04:00:00+09:00","round":"Semifinal","home":"Winner QF-3","away":"Winner QF-4","broadcast":"DAZN","id":102},{"datetime":"2026-07-19T06:00:00+09:00","round":"3rd Place Playoff","home":"Loser SF-1","away":"Loser SF-2","broadcast":"DAZN","id":103},{"datetime":"2026-07-20T04:00:00+09:00","round":"Final","home":"Winner SF-1","away":"Winner SF-2","broadcast":"DAZN / NHK","id":104}];
+let MATCHES = [...FALLBACK_MATCHES];
+const ESPN_ENDPOINTS = [
+  'https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260611-20260720&limit=300',
+  'https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world_cup/scoreboard?dates=20260611-20260720&limit=300'
+];
+const TEAM_ALIASES = {
+  usa:'unitedstates',unitedstatesofamerica:'unitedstates',usmnt:'unitedstates',
+  korearepublic:'southkorea',republicofkorea:'southkorea',korea:'southkorea',
+  czechrepublic:'czechia',bosniaherzegovina:'bosniaandherzegovina',bosnia:'bosniaandherzegovina',
+  'cotedivoire':'ivorycoast',capverdeislands:'capeverde',curacao:'curacao',
+  drcongo:'drcongo',congodr:'drcongo',democraticrepublicofcongo:'drcongo',turkiye:'turkey'
+};
+let state = { q:'', round:'すべて', onlyJapan:false, results:[], byKey:{}, loading:false, lastUpdated:null, error:'', dynamic:false };
 const $ = id => document.getElementById(id);
 function basicNormalize(name){ return String(name||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/&/g,'and').replace(/[^a-z0-9]+/g,''); }
 function normalizeName(name){ const n=basicNormalize(name); return TEAM_ALIASES[n] || n; }
+function toTokyoIso(dateStr){ const d=new Date(dateStr); const p=new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Tokyo',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).format(d).replace(' ','T'); return p + '+09:00'; }
+function tokyoDateKey(dateStr){ return new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Tokyo',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date(dateStr)); }
 function dateKey(iso){ return iso.slice(0,10); }
 function minuteValue(iso){ return Math.round(new Date(iso).getTime()/60000); }
 function fmtDate(iso){ return new Intl.DateTimeFormat('ja-JP',{month:'numeric',day:'numeric',weekday:'short'}).format(new Date(iso)); }
 function fmtTime(iso){ return new Intl.DateTimeFormat('ja-JP',{hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date(iso)); }
-function isPlaceholderTeam(name){ return /^(tbd|winner|loser|\d+(st|nd|rd|th) group|3rd group)/i.test(String(name||'')); }
 function makeKeys(date, home, away){ const h=normalizeName(home), a=normalizeName(away); return [`${date}-${h}-${a}`,`${date}-${a}-${h}`,`${date}-${[h,a].sort().join('-')}`]; }
-function findResult(m){
-  for (const k of makeKeys(dateKey(m.datetime),m.home,m.away)) if (state.byKey[k]) return state.byKey[k];
-  if (isPlaceholderTeam(m.home)||isPlaceholderTeam(m.away)) return null;
-  const d=dateKey(m.datetime), h=normalizeName(m.home), a=normalizeName(m.away), sm=minuteValue(m.datetime);
-  return state.results.find(r => r.dateKey===d && ((r.homeNorm===h&&r.awayNorm===a)||(r.homeNorm===a&&r.awayNorm===h)) && Math.abs(minuteValue(r.date)-sm)<=180) || null;
+function isJapanMatch(m){ return normalizeName(m.home)==='japan'||normalizeName(m.away)==='japan'; }
+function fallbackNear(dateIso, home, away){
+  const d=dateKey(dateIso), sm=minuteValue(dateIso), h=normalizeName(home), a=normalizeName(away);
+  return FALLBACK_MATCHES.find(m => {
+    const mh=normalizeName(m.home), ma=normalizeName(m.away);
+    return dateKey(m.datetime)===d && Math.abs(minuteValue(m.datetime)-sm)<=240 && ((mh===h&&ma===a)||(mh===a&&ma===h));
+  });
+}
+function inferBroadcast(m){
+  if(isJapanMatch(m)){
+    if(dateKey(m.datetime)==='2026-06-15') return 'DAZN / 日本戦無料 / NHK';
+    if(dateKey(m.datetime)==='2026-06-21') return 'DAZN / 日本戦無料 / 日本テレビ';
+    if(dateKey(m.datetime)==='2026-06-26') return 'DAZN / 日本戦無料 / NHK';
+    return 'DAZN / 日本戦無料';
+  }
+  if(m.round==='Final') return 'DAZN / NHK';
+  return 'DAZN';
+}
+function roundFromEvent(ev){
+  const texts = [ev.season?.type?.name, ev.group?.name, ev.competitions?.[0]?.notes?.[0]?.headline, ev.name, ev.shortName].filter(Boolean).join(' ');
+  const m = texts.match(/Group\s+[A-L]/i); if(m) return m[0].replace(/group/i,'Group');
+  if(/final/i.test(texts) && !/semi/i.test(texts)) return 'Final';
+  if(/third|3rd/i.test(texts)) return '3rd Place Playoff';
+  if(/semi/i.test(texts)) return 'Semifinal';
+  if(/quarter/i.test(texts)) return 'Quarterfinal';
+  if(/round of 16|r16/i.test(texts)) return 'Round of 16';
+  if(/round of 32|r32/i.test(texts)) return 'Round of 32';
+  const d = ev.date ? tokyoDateKey(ev.date) : '';
+  const fallback = FALLBACK_MATCHES.find(x=>dateKey(x.datetime)===d && Math.abs(minuteValue(x.datetime)-minuteValue(toTokyoIso(ev.date)))<=240);
+  return fallback?.round || 'World Cup';
 }
 function normalizeEspnEvent(ev){
   const comp = ev.competitions?.[0]; const competitors = comp?.competitors || [];
   const home = competitors.find(c=>c.homeAway==='home') || competitors[0];
   const away = competitors.find(c=>c.homeAway==='away') || competitors[1];
-  if(!home || !away) return null;
-  const hn = home.team?.displayName || home.team?.shortDisplayName || home.team?.name;
-  const an = away.team?.displayName || away.team?.shortDisplayName || away.team?.name;
-  const date = ev.date || comp.date;
-  const obj = {date, dateKey: date ? new Date(date).toISOString().slice(0,10) : '', home:hn, away:an, homeNorm:normalizeName(hn), awayNorm:normalizeName(an), homeScore:home.score, awayScore:away.score, hasScore:home.score !== undefined && away.score !== undefined && home.score !== '' && away.score !== '', status:ev.status?.type?.shortDetail || ev.status?.type?.description || '', completed:!!ev.status?.type?.completed, source:'ESPN'};
-  const localDate = date ? new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Tokyo',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date(date)) : obj.dateKey;
-  obj.dateKey = localDate;
-  const keys = makeKeys(obj.dateKey, hn, an); obj.key=keys[0]; obj.reverseKey=keys[1]; obj.teamSetKey=keys[2]; return obj;
+  if(!home || !away || !ev.date) return null;
+  const hn = home.team?.displayName || home.team?.shortDisplayName || home.team?.name || 'TBD';
+  const an = away.team?.displayName || away.team?.shortDisplayName || away.team?.name || 'TBD';
+  const tIso = toTokyoIso(ev.date);
+  const scoreAvailable = home.score !== undefined && away.score !== undefined && home.score !== '' && away.score !== '';
+  const statusType = ev.status?.type || {};
+  const r = {
+    espnId: ev.id,
+    date: ev.date,
+    datetime: tIso,
+    dateKey: dateKey(tIso),
+    round: roundFromEvent(ev),
+    home: hn,
+    away: an,
+    homeNorm: normalizeName(hn),
+    awayNorm: normalizeName(an),
+    homeScore: scoreAvailable ? home.score : undefined,
+    awayScore: scoreAvailable ? away.score : undefined,
+    hasScore: scoreAvailable,
+    status: statusType.shortDetail || statusType.description || '',
+    completed: !!statusType.completed,
+    source: 'ESPN'
+  };
+  const keys=makeKeys(r.dateKey, hn, an); r.key=keys[0]; r.reverseKey=keys[1]; r.teamSetKey=keys[2];
+  return r;
 }
-async function fetchResults(){
-  state.loading=true; renderNote();
-  const urls = [
-    'https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260611-20260719&limit=200',
-    'https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world_cup/scoreboard?dates=20260611-20260719&limit=200'
-  ];
-  let pulled=[]; let err='';
-  for(const url of urls){
-    try{ const res=await fetch(url,{cache:'no-store'}); if(!res.ok) throw new Error('HTTP '+res.status); const data=await res.json(); pulled=(data.events||[]).map(normalizeEspnEvent).filter(Boolean); if(pulled.length) break; }
-    catch(e){ err=String(e.message||e); }
+async function pullEspn(){
+  let lastErr = '';
+  for(const url of ESPN_ENDPOINTS){
+    try{
+      const res = await fetch(url, {cache:'no-store'});
+      if(!res.ok) throw new Error('HTTP '+res.status);
+      const data = await res.json();
+      const events = (data.events || []).map(normalizeEspnEvent).filter(Boolean);
+      if(events.length) return events;
+    }catch(e){ lastErr = e.message || String(e); }
   }
-  const embedded = MATCHES.filter(m=>m.staticStatus).map(m=>{ const o={date:m.datetime,dateKey:dateKey(m.datetime),home:m.home,away:m.away,homeNorm:normalizeName(m.home),awayNorm:normalizeName(m.away),homeScore:m.staticHomeScore,awayScore:m.staticAwayScore,hasScore:true,status:m.staticStatus,completed:true,source:'embedded'}; const keys=makeKeys(o.dateKey,o.home,o.away); o.key=keys[0]; o.reverseKey=keys[1]; o.teamSetKey=keys[2]; return o; });
+  throw new Error(lastErr || '取得できませんでした');
+}
+function rebuildFromEvents(events){
+  const rows = events.map((r, i) => {
+    const base = fallbackNear(r.datetime, r.home, r.away);
+    return {
+      datetime: r.datetime,
+      round: r.round || base?.round || 'World Cup',
+      home: r.home,
+      away: r.away,
+      broadcast: base?.broadcast || inferBroadcast(r),
+      id: r.espnId || base?.id || i+1,
+      espnId: r.espnId,
+      staticHomeScore: r.hasScore ? r.homeScore : base?.staticHomeScore,
+      staticAwayScore: r.hasScore ? r.awayScore : base?.staticAwayScore,
+      staticStatus: r.completed ? 'FT' : base?.staticStatus
+    };
+  }).sort((a,b)=>new Date(a.datetime)-new Date(b.datetime));
+  if(rows.length >= 80) {
+    MATCHES = rows;
+    state.dynamic = true;
+  } else {
+    // 一部しか取れない場合は、埋め込み104試合を維持して結果だけ補完
+    state.dynamic = false;
+  }
+}
+function buildResultIndex(events){
+  const embedded = FALLBACK_MATCHES.filter(m=>m.staticHomeScore!==undefined && m.staticAwayScore!==undefined).map(m=>{
+    const o={date:m.datetime,datetime:m.datetime,dateKey:dateKey(m.datetime),home:m.home,away:m.away,homeNorm:normalizeName(m.home),awayNorm:normalizeName(m.away),homeScore:m.staticHomeScore,awayScore:m.staticAwayScore,hasScore:true,status:m.staticStatus||'FT',completed:m.staticStatus==='FT',source:'embedded'};
+    const keys=makeKeys(o.dateKey,o.home,o.away); o.key=keys[0]; o.reverseKey=keys[1]; o.teamSetKey=keys[2]; return o;
+  });
   const map = new Map();
   embedded.forEach(r=>map.set(r.teamSetKey, r));
-  pulled.forEach(r=>{
+  events.forEach(r=>{
     const current = map.get(r.teamSetKey);
-    // 外部APIにスコアが無い試合で、埋め込み済みの結果を上書きしない
     if(!current || r.hasScore || !current.hasScore) map.set(r.teamSetKey, r);
   });
-  state.results=[...map.values()]; state.byKey={}; state.results.forEach(r=>[r.key,r.reverseKey,r.teamSetKey].forEach(k=>state.byKey[k]=r));
-  state.lastUpdated=new Date(); state.loading=false; state.error = pulled.length ? '' : '外部APIから結果を取得できない場合は、埋め込み済みの結果だけ表示します。';
+  state.results=[...map.values()];
+  state.byKey={}; state.results.forEach(r=>[r.key,r.reverseKey,r.teamSetKey].forEach(k=>state.byKey[k]=r));
+}
+function findResult(m){
+  for(const k of makeKeys(dateKey(m.datetime),m.home,m.away)) if(state.byKey[k]) return state.byKey[k];
+  const d=dateKey(m.datetime), h=normalizeName(m.home), a=normalizeName(m.away), sm=minuteValue(m.datetime);
+  return state.results.find(r => r.dateKey===d && Math.abs(minuteValue(r.datetime||r.date)-sm)<=240 && ((r.homeNorm===h&&r.awayNorm===a)||(r.homeNorm===a&&r.awayNorm===h))) || null;
+}
+async function refreshData(){
+  state.loading=true; state.error=''; renderNote();
+  try{
+    const events = await pullEspn();
+    rebuildFromEvents(events);
+    buildResultIndex(events);
+    state.lastUpdated = new Date();
+  }catch(e){
+    state.error = '外部APIから取得できませんでした。埋め込み済みデータで表示しています。詳細: ' + (e.message || e);
+    state.dynamic = false;
+    buildResultIndex([]);
+  }
+  state.loading=false;
+  refreshRoundOptions();
   render();
 }
-function renderNote(){ $('note').textContent = `📺 DAZNは全試合ライブ配信。${state.loading?'結果取得中… ':''}${state.lastUpdated ? '最終更新: '+state.lastUpdated.toLocaleTimeString('ja-JP')+' / ' : ''}取得済み結果: ${state.results.length}件`; }
+function refreshRoundOptions(){
+  const current = state.round;
+  const rounds=['すべて',...new Set(MATCHES.map(m=>m.round).filter(Boolean))];
+  $('round').innerHTML=rounds.map(r=>`<option>${r}</option>`).join('');
+  state.round = rounds.includes(current) ? current : 'すべて';
+  $('round').value = state.round;
+}
+function renderNote(){
+  $('note').textContent = `📺 DAZNは全試合ライブ配信。${state.loading?'外部データ取得中… ':''}${state.lastUpdated ? '最終更新: '+state.lastUpdated.toLocaleTimeString('ja-JP')+' / ' : ''}カード: ${MATCHES.length}件 / 結果: ${state.results.length}件`;
+  $('source').textContent = state.dynamic ? 'source: ESPN dynamic cards' : 'source: fallback schedule';
+}
 function render(){
-  renderNote(); $('error').style.display = state.error ? 'block':'none'; $('error').textContent = state.error;
+  renderNote();
+  $('error').style.display = state.error ? 'block':'none';
+  $('error').textContent = state.error;
   const q=state.q.toLowerCase();
-  const filtered=MATCHES.filter(m=> (state.round==='すべて'||m.round===state.round) && (!state.onlyJapan || m.home==='Japan'||m.away==='Japan') && `${m.round} ${m.home} ${m.away} ${m.broadcast}`.toLowerCase().includes(q));
-  $('count').textContent=filtered.length;
+  const filtered = MATCHES.filter(m => (state.round==='すべて'||m.round===state.round) && (!state.onlyJapan||isJapanMatch(m)) && `${m.round} ${m.home} ${m.away} ${m.broadcast}`.toLowerCase().includes(q));
+  $('count').textContent = `${filtered.length} matches`;
   const grouped={}; filtered.forEach(m=>{ const k=fmtDate(m.datetime); (grouped[k] ||= []).push(m); });
   $('list').innerHTML = Object.keys(grouped).length ? Object.entries(grouped).map(([date,games])=>`<section class="day"><h2>📅 ${date}</h2><div class="grid">${games.map(cardHtml).join('')}</div></section>`).join('') : '<div class="empty">該当する試合がありません</div>';
 }
 function cardHtml(m){
-  const r=findResult(m); const isJapan=m.home==='Japan'||m.away==='Japan';
-  const fallbackHasScore = m.staticHomeScore !== undefined && m.staticAwayScore !== undefined;
-  const hasScore = r?.hasScore || fallbackHasScore;
+  const r=findResult(m); const hasScore = r?.hasScore || (m.staticHomeScore!==undefined && m.staticAwayScore!==undefined);
   const homeScore = r?.hasScore ? r.homeScore : m.staticHomeScore;
   const awayScore = r?.hasScore ? r.awayScore : m.staticAwayScore;
   const score = hasScore ? `${homeScore} - ${awayScore}` : 'vs';
-  const status = r?.status || m.staticStatus || '結果未取得 / 試合前';
-  const completed = r?.completed || m.staticStatus === 'FT';
-  const source = r?.source || (fallbackHasScore ? 'embedded' : '');
-  const cls = completed ? 'done' : (hasScore ? 'live' : '');
-  return `<article class="card ${isJapan?'japan':''}"><div class="meta"><span>${m.round}</span><b>${fmtTime(m.datetime)}</b></div><div class="teams"><span>${m.home}</span><em>${score}</em><span>${m.away}</span></div><div class="status ${cls}">${status}${source ? ' · '+source : ''}</div><div class="broadcast">📺 ${m.broadcast}</div></article>`;
+  const status = r?.status || m.staticStatus || '試合前 / 未確定';
+  const completed = r?.completed || m.staticStatus==='FT';
+  const live = hasScore && !completed;
+  return `<article class="card ${isJapanMatch(m)?'japan':''}"><div class="meta"><span>${m.round}</span><b>${fmtTime(m.datetime)}</b></div><div class="teams"><span>${m.home}</span><em>${score}</em><span>${m.away}</span></div><div class="status ${completed?'done':live?'live':''}">${status}${r?.source ? ' · '+r.source : ''}</div><div class="broadcast">📺 ${m.broadcast}</div></article>`;
 }
 function init(){
-  const rounds=['すべて',...new Set(MATCHES.map(m=>m.round))]; $('round').innerHTML=rounds.map(r=>`<option>${r}</option>`).join('');
-  $('q').addEventListener('input',e=>{state.q=e.target.value;render();}); $('round').addEventListener('change',e=>{state.round=e.target.value;render();});
+  refreshRoundOptions();
+  $('q').addEventListener('input',e=>{state.q=e.target.value;render();});
+  $('round').addEventListener('change',e=>{state.round=e.target.value;render();});
   $('japan').addEventListener('click',()=>{state.onlyJapan=!state.onlyJapan;$('japan').classList.toggle('active',state.onlyJapan);render();});
-  $('refresh').addEventListener('click',fetchResults); $('reset').addEventListener('click',()=>{state.q='';state.round='すべて';state.onlyJapan=false;$('q').value='';$('round').value='すべて';$('japan').classList.remove('active');render();});
-  render(); fetchResults(); setInterval(fetchResults,60000);
+  $('refresh').addEventListener('click',refreshData);
+  $('reset').addEventListener('click',()=>{state.q='';state.round='すべて';state.onlyJapan=false;$('q').value='';$('japan').classList.remove('active');refreshRoundOptions();render();});
+  buildResultIndex([]); render(); refreshData(); setInterval(refreshData, 60*1000);
 }
 init();
 </script>
